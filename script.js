@@ -112,13 +112,12 @@
 
     const dir = DIRECTIONS[direction];
     const head = snake[0];
-    const newHead = { x: head.x + dir.x, y: head.y + dir.y };
+    const newHead = {
+      x: (head.x + dir.x + TILE_COUNT) % TILE_COUNT,
+      y: (head.y + dir.y + TILE_COUNT) % TILE_COUNT,
+    };
 
-    if (
-      newHead.x < 0 || newHead.x >= TILE_COUNT ||
-      newHead.y < 0 || newHead.y >= TILE_COUNT ||
-      snake.some(seg => seg.x === newHead.x && seg.y === newHead.y)
-    ) {
+    if (snake.some(seg => seg.x === newHead.x && seg.y === newHead.y)) {
       gameOver();
       return;
     }
@@ -156,7 +155,7 @@
     ctx.shadowBlur = 0;
 
     snake.forEach((seg, i) => {
-      ctx.fillStyle = i === 0 ? '#39ff14' : '#22c40f';
+      ctx.fillStyle = i === 0 ? '#c77dff' : '#9d4edd';
       ctx.fillRect(seg.x * GRID_SIZE + 1, seg.y * GRID_SIZE + 1, GRID_SIZE - 2, GRID_SIZE - 2);
     });
   }
