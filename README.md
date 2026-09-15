@@ -39,4 +39,3 @@ index.html   Page markup and canvas
 style.css    Styling
 script.js    Game logic (input, movement, collisions, scoring)
 ```
-alsónadrág
