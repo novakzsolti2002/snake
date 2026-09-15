@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0d1117;
+  --panel: #161b22;
+  --accent: #39ff14;
+  --accent-dim: #22c40f;
+  --text: #e6edf3;
+  --text-dim: #8b949e;
+  --danger: #ff4d4d;
+  --border: #30363d;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #161b22 0%, #0d1117 70%);
+  color: var(--text);
+  font-family: "Courier New", Courier, monospace;
+}
+
+.game-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+}
+
+.title {
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: 0.4em;
+  color: var(--accent);
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.6), 0 0 16px rgba(57, 255, 20, 0.3);
+}
+
+.scoreboard {
+  display: flex;
+  gap: 24px;
+}
+
+.score-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 20px;
+  min-width: 110px;
+}
+
+.score-box .label {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.score-box .value {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.canvas-container {
+  position: relative;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 0 24px rgba(57, 255, 20, 0.15), 0 8px 24px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  background: #010409;
+}
+
+canvas {
+  display: block;
+  background: #010409;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(1, 4, 9, 0.85);
+  backdrop-filter: blur(2px);
+  transition: opacity 0.2s ease;
+}
+
+.overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.overlay-content {
+  text-align: center;
+  padding: 20px;
+}
+
+#overlay-title {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 1.8rem;
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.5);
+}
+
+#overlay-title.game-over {
+  color: var(--danger);
+  text-shadow: 0 0 8px rgba(255, 77, 77, 0.6);
+}
+
+#overlay-message {
+  margin: 0 0 16px;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.restart-btn {
+  font-family: inherit;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  padding: 10px 24px;
+  background: var(--accent-dim);
+  color: #04170a;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.1s ease, background 0.2s ease;
+}
+
+.restart-btn:hover {
+  background: var(--accent);
+}
+
+.restart-btn:active {
+  transform: scale(0.96);
+}
+
+.restart-btn.hidden {
+  display: none;
+}
+
+.hint {
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
